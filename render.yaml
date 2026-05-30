@@ -2,6 +2,7 @@ services:
   - type: web
     name: labelsense-backend
     runtime: python3
+    rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
@@ -10,9 +11,11 @@ services:
           name: labelsense-db
           property: connectionString
       - key: CORS_ORIGINS
-        value: https://labelsense.onrender.com
+        value: http://localhost:5173,http://127.0.0.1:5173,https://your-vercel-domain.vercel.app
       - key: APP_NAME
         value: LabelSense
+      - key: PYTHON_VERSION
+        value: 3.11.7
 
   - type: pserv
     name: labelsense-db
