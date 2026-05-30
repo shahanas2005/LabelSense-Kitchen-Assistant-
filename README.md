@@ -110,6 +110,27 @@ The backend reads its settings from `backend/.env`. Common values include:
 - Voice output is generated as a summary to keep playback concise.
 - The backend stores uploaded images, audio, and analysis history locally by default.
 
+## Vercel Deployment
+
+This repository is set up to deploy the frontend on Vercel.
+
+Use these settings when creating the Vercel project from GitHub:
+
+- Framework preset: `Vite`
+- Build command: `cd frontend && npm run build`
+- Output directory: `frontend/dist`
+- Install command: `cd frontend && npm install`
+
+Set this environment variable in Vercel:
+
+- `VITE_API_BASE_URL` = the public URL of your backend API, for example `https://your-backend-domain.com/api`
+
+Important:
+
+- The FastAPI backend is not meant to run on Vercel as-is because it depends on OCR and TTS packages that fit better on a normal Python host.
+- Deploy the backend separately on a Python-friendly host such as Render, Railway, or any server that supports the required native libraries.
+- The frontend will call that backend through `VITE_API_BASE_URL`.
+
 ## License and Ownership
 
 © 2026 LabelSense. Created by Shah Anas Khan.
