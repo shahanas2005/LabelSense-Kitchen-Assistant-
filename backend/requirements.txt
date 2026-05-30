@@ -1,0 +1,14 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+sqlalchemy==2.0.36
+pydantic==2.10.4
+pydantic-settings==2.7.0
+email-validator==2.2.0
+opencv-python-headless==4.10.0.84
+pillow==11.0.0
+numpy==2.2.1
+python-dateutil==2.9.0.post0
+rapidocr-onnxruntime==1.4.4
+pyttsx3==2.98
+psycopg2-binary==2.9.10
