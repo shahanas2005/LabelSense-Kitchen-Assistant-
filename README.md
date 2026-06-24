@@ -110,45 +110,6 @@ The backend reads its settings from `backend/.env`. Common values include:
 - Voice output is generated as a summary to keep playback concise.
 - The backend stores uploaded images, audio, and analysis history locally by default.
 
-## Vercel Deployment
-
-This repository is set up to deploy the frontend on Vercel.
-
-Use these settings when creating the Vercel project from GitHub:
-
-- Framework preset: `Vite`
-- Build command: `cd frontend && npm run build`
-- Output directory: `frontend/dist`
-- Install command: `cd frontend && npm install`
-
-Set this environment variable in Vercel:
-
-- `VITE_API_BASE_URL` = the public URL of your backend API, for example `https://your-backend-domain.com/api`
-
-Important:
-
-- The FastAPI backend is not meant to run on Vercel as-is because it depends on OCR and TTS packages that fit better on a normal Python host.
-- Deploy the backend separately on a Python-friendly host such as Render, Railway, or any server that supports the required native libraries.
-- The frontend will call that backend through `VITE_API_BASE_URL`.
-
-## Render Deployment
-
-The backend includes a Render blueprint in [render.yaml](render.yaml).
-
-Recommended Render setup:
-
-- Web service root directory: `backend`
-- Build command: `pip install -r requirements.txt`
-- Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-- Database: PostgreSQL service created from the same blueprint
-
-Suggested environment variables:
-
-- `APP_NAME` = `LabelSense`
-- `CORS_ORIGINS` = your frontend URL plus localhost during development
-- `PYTHON_VERSION` = `3.11.7`
-
-After the backend is live, set `VITE_API_BASE_URL` in Vercel to the Render API base URL, for example `https://your-render-service.onrender.com/api`.
 
 ## License and Ownership
 
